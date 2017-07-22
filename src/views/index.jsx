@@ -1,8 +1,7 @@
+import OrderView, { OrderReducer } from './Order';
 
-export const reducers = {
-    noOp: {},
-};
+export const reducers = Object.assign({}, OrderReducer);
 
 export {
-    noOp: {},
+    OrderView,
 };

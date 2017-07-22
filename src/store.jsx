@@ -7,8 +7,6 @@ const createAsyncStore = compose(
     window.devToolsExtension ? window.devToolsExtension() : func => func,
 )(createStore);
 
-
 export default createAsyncStore(
     combineReducers(reducers),
 );
-

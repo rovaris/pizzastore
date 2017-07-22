@@ -1,8 +1,21 @@
 @import 'base/variables';
 @import 'base/colors';
 @import 'node_modules/muicss/lib/sass/mui';
+@import 'libs/font-awesome/font-awesome';
 
 body {
     font-family: 'Roboto', sans-serif;
 }
 
+.icon {
+    font-size: 16px;
+    margin-right: 5px;
+
+    &:hover {
+        color: red;
+        font-size: 20px;
+        transition-property: font-size color;
+        transition-timing-function: linear;
+        transition-duration: 0.1s;
+    }
+}

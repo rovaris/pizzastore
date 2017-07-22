@@ -1,30 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/main.scss';
-import { Appbar, Button, Panel, Container, Row } from 'muicss/react';
- 
-class Example extends React.Component {
-    onClick() {
-        console.log('clicked on button');
-    }
-  
+import React, { Component } from 'react';
+import { Appbar, Container } from 'muicss/react';
+import { OrderView } from './views';
+
+class App extends Component {
     render() {
         return (
             <div>
                 <Appbar />
                 <Container>
-                    <Row>
-                        <h1> Place your order </h1>
-                        <p> Lorem ipsum Blabalbalbalblalbalbal </p>
-                        <br/>
-                        <Panel>
-                            <Button onClick={this.onClick}>My Button</Button>
-                        </Panel>
-                    </Row>
+                    <OrderView />
                 </Container>
           </div>
         );
     }
 }
 
-export default Example;
+export default App;
