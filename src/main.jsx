@@ -2,14 +2,14 @@ import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import './styles/main.scss';
 import { AppContainer } from 'react-hot-loader';
+import './styles/main.scss';
 import App from './App';
 import store from './store';
 
 const DEFAULT_APP_ID = 'root';
 
-function renderApp(RootComponent, store, id = DEFAULT_APP_ID, args = {}) {
+function renderApp(RootComponent, id = DEFAULT_APP_ID, args = {}) {
     const target = window.document.getElementById(id);
 
     if (target) {
@@ -25,7 +25,7 @@ function renderApp(RootComponent, store, id = DEFAULT_APP_ID, args = {}) {
 }
 
 function onDomLoaded() {
-    renderApp(App, store);
+    renderApp(App);
 
     if (module.hot) {
         module.hot.accept('./App', () => {

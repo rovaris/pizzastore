@@ -2,7 +2,6 @@ import { handleActions } from 'redux-actions';
 import { uniqueId } from 'lodash';
 
 import {
-    FORM_INIT,
     SELECT_PIZZA,
     SELECT_TOPPING,
     RESET_FORM,
@@ -10,34 +9,34 @@ import {
 
 const PIZZA_FORM_INITIAL_STATE = {
     value: 0,
-    label: "",
+    label: '',
     toppings: [],
     maxToppings: null,
 };
 
-const getToppingCount = ( toppings ) => {
-    return toppings.reduce((previous, current) => {
+const getToppingCount = toppings => (
+    toppings.reduce((previous, current) => {
         if (current.selected) {
-            return previous +1;
+            return previous + 1;
         }
 
         return previous;
-    },0);
-};
+    }, 0)
+);
 
-const toggleTopping = (toppings, topping) => {
-    toppings.some(entry => {
+const toggleTopping = (toppings, topping) => (
+    toppings.some((entry) => {
         if (entry.uid === topping.uid) {
             entry.selected = topping.selected;
             return true;
         }
 
         return false;
-    });
-};
+    })
+);
 
 const unselectFirstTopping = (toppings, selectedTopping) => {
-    toppings.some(entry => {
+    toppings.some((entry) => {
         if (entry.selected && entry.uid !== selectedTopping.uid) {
             entry.selected = false;
             return true;
@@ -49,7 +48,7 @@ const unselectFirstTopping = (toppings, selectedTopping) => {
 const PizzaFormReducer = handleActions({
     [SELECT_PIZZA]: (state, { payload }) => {
         const toppings = payload.toppings;
-        toppings.map(topping => {
+        toppings.forEach((topping) => {
             topping.uid = uniqueId('topping');
             topping.selected = topping.defaultSelected;
         });
@@ -59,7 +58,7 @@ const PizzaFormReducer = handleActions({
             ...payload,
         });
     },
-    [SELECT_TOPPING]: (state, { payload: { topping } } ) => {
+    [SELECT_TOPPING]: (state, { payload: { topping } }) => {
         const { toppings, maxToppings } = state;
 
         toggleTopping(toppings, topping);
@@ -70,10 +69,10 @@ const PizzaFormReducer = handleActions({
 
         return ({
             ...state,
-            toppings: [ ...toppings ],
+            toppings: [...toppings],
         });
     },
-    [RESET_FORM]: state => ({
+    [RESET_FORM]: () => ({
         ...PIZZA_FORM_INITIAL_STATE,
     }),
 }, PIZZA_FORM_INITIAL_STATE);

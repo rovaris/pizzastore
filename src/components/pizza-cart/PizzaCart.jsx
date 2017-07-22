@@ -8,11 +8,7 @@ import Actions from './actions';
 
 class PizzaCart extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-    removePizzaFromCart = (pizzaToBeRemoved) => {
+    removePizzaFromCart = pizzaToBeRemoved => () => {
         const { actions } = this.props;
         actions.removePizza(pizzaToBeRemoved);
     }
@@ -23,9 +19,11 @@ class PizzaCart extends Component {
         const hasPizzas = pizzas.length > 0;
 
         if (!hasPizzas) {
-            return <Panel>
-                <h5>Empty Cart</h5>
-            </Panel>
+            return (
+                <Panel>
+                    <h5>Empty Cart</h5>
+                </Panel>
+            );
         }
 
         return (
@@ -33,23 +31,23 @@ class PizzaCart extends Component {
                 {
                     pizzas.map(pizza => (
                         <div key={ uniqueId('pizza') }>
-                            <span title="remove" className="icon fa fa-trash-o" onClick={ () => this.removePizzaFromCart(pizza)} />
+                            <span title="remove" className="icon fa fa-trash-o" onClick={ this.removePizzaFromCart(pizza) } />
                             <span>{ pizza.label }</span>
                             <CurrencyValue value={ pizza.price } className="mui--pull-right" />
                             <ul>
                                 {
-                                    pizza.toppings.map( topping => (
+                                    pizza.toppings.map(topping => (
                                         <li key={ uniqueId('topping') }>
                                             { topping.name}
-                                            <CurrencyValue value={ topping.price } className="mui--pull-right" /> 
+                                            <CurrencyValue value={ topping.price } className="mui--pull-right" />
                                         </li>
                                     ))
                                 }
                             </ul>
                             <span>Price: </span>
                             <CurrencyValue value={ pizza.total } className="mui--pull-right" />
-                            <br/>
-                            <br/>
+                            <br />
+                            <br />
                         </div>
                     ))
                 }

@@ -20,13 +20,13 @@ module.exports = {
                 enforce: "pre",
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                // loader: 'eslint-loader',
-                // options: {
-                //     configFile: '.eslintrc',
-                //     emitWarning: true,
-                //     failOnWarning: false,
-                //     failOnError: false,
-                // }
+                loader: 'eslint-loader',
+                options: {
+                    configFile: '.eslintrc',
+                    emitWarning: true,
+                    failOnWarning: false,
+                    failOnError: false,
+                }
             },
             {
                 test: /\.jsx?$/,

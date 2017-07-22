@@ -1,8 +1,8 @@
-import { uniqueId } from "lodash";
+import { uniqueId } from 'lodash';
 
-export const ADD_PIZZA = uniqueId("ADD_PIZZA");
-export const REMOVE_PIZZA = uniqueId("REMOVE_PIZZA");
-export const RESET_CART = uniqueId("RESET_CART");
+export const ADD_PIZZA = uniqueId('ADD_PIZZA');
+export const REMOVE_PIZZA = uniqueId('REMOVE_PIZZA');
+export const RESET_CART = uniqueId('RESET_CART');
 
 
 function addPizza(pizza) {
@@ -35,4 +35,4 @@ export default {
     addPizza,
     removePizza,
     resetCart,
-}
+};

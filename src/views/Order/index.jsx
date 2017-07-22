@@ -1,5 +1,5 @@
-import { default as OrderView } from './view';
-import { reducers } from 'components' ;
+import { reducers } from 'components';
+import OrderView from './view';
 
 const { PizzaCartReducer, PizzaFormReducer } = reducers;
 

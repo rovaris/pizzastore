@@ -8,26 +8,26 @@ import {
 } from './actions';
 
 const PIZZA_CART_INITIAL_STATE = {
-    pizzas: [], //Imutable Array
+    pizzas: [], //  Imutable Array
     total: 0,
 };
 
-const calculateTotalCost = (pizzaList):Number => {
-    return pizzaList.reduce( (previous, current) => {
-        return previous + (current.total);
-    }, 0);
-}
+const calculateTotalCost = (pizzaList):Number => (
+    pizzaList.reduce((previous, current) => (
+        previous + (current.total)
+    ), 0)
+);
 
 const calculatePizzaCost = (pizza):Number => {
     const { toppings } = pizza;
-    const toppingsTotal = toppings.reduce( (previous, current) => {
-        return previous + current.price;
-    }, 0);
+    const toppingsTotal = toppings.reduce((previous, current) => (
+        previous + current.price
+    ), 0);
     return pizza.price + toppingsTotal;
-}
+};
 
 const PizzaCartReducer = handleActions({
-    [ADD_PIZZA]: (state,  { payload }) => {
+    [ADD_PIZZA]: (state, { payload }) => {
         const { pizzas } = state;
         const pizzaCost = calculatePizzaCost(payload);
         payload.id = uniqueId('pizza');
@@ -36,15 +36,15 @@ const PizzaCartReducer = handleActions({
         const total = calculateTotalCost(pizzas);
         return {
             ...state,
-            pizzas: [ ...pizzas ],
-            total
+            pizzas: [...pizzas],
+            total,
         };
     },
-    [REMOVE_PIZZA]: (state, { payload  } ) => {
+    [REMOVE_PIZZA]: (state, { payload }) => {
         const { pizzas } = state;
         const pizzaID = payload.id;
 
-        const pizzaIndex = pizzas.findIndex( elem => elem.id === pizzaID);
+        const pizzaIndex = pizzas.findIndex(elem => elem.id === pizzaID);
 
         pizzas.splice(pizzaIndex, 1);
 
@@ -59,7 +59,7 @@ const PizzaCartReducer = handleActions({
 
         };
     },
-    [RESET_CART]: state => ({
+    [RESET_CART]: () => ({
         ...PIZZA_CART_INITIAL_STATE,
     }),
 }, PIZZA_CART_INITIAL_STATE);

@@ -1,8 +1,8 @@
-import { uniqueId } from "lodash";
+import { uniqueId } from 'lodash';
 
-export const SELECT_PIZZA = uniqueId("SELECT_PIZZA");
-export const SELECT_TOPPING = uniqueId("SELECT_TOPPING");
-export const RESET_FORM = uniqueId("RESET_FORM");
+export const SELECT_PIZZA = uniqueId('SELECT_PIZZA');
+export const SELECT_TOPPING = uniqueId('SELECT_TOPPING');
+export const RESET_FORM = uniqueId('RESET_FORM');
 
 function selectPizza(selectedPizza) {
     return (dispatch) => {

@@ -5,7 +5,7 @@ import { PizzaForm, PizzaFormReducer, PizzaFormActions } from './pizza-form';
 export const actions = {
     PizzaCartActions,
     PizzaFormActions,
-}
+};
 
 export const reducers = {
     PizzaCartReducer,
