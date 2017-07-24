@@ -21,7 +21,7 @@ class OrderView extends Component {
 
     render() {
         const { isLoading, error, menu } = this.props.reducer;
-        console.log(menu);
+
         if (isLoading) {
             return (
                 <Row>
@@ -38,7 +38,7 @@ class OrderView extends Component {
                 </Row>
             )
         }
-        debugger;
+
         if (menu.length <= 0) {
             return (
                 <Row>

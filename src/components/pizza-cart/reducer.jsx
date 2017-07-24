@@ -23,7 +23,7 @@ const calculatePizzaCost = (pizza):Number => {
     const toppingsTotal = toppings.reduce((previous, current) => (
         previous + current.price
     ), 0);
-    return pizza.price + toppingsTotal;
+    return pizza.basePrice + toppingsTotal;
 };
 
 const PizzaCartReducer = handleActions({
@@ -48,7 +48,7 @@ const PizzaCartReducer = handleActions({
 
         pizzas.splice(pizzaIndex, 1);
 
-        const newPizzaList = Array.from(pizzas);
+        const newPizzaList = [...pizzas];
 
         const total = calculateTotalCost(newPizzaList);
 

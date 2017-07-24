@@ -27,13 +27,13 @@ class PizzaForm extends Component {
 
     handleSubmission = () => {
         const { actions, onSubmit } = this.props;
-        const { label, price, toppings } = this.props.reducer;
+        const { name, basePrice, toppings } = this.props.reducer;
 
         const selectedToppings = toppings.filter(entry => entry.selected === true);
 
         const order = {
-            label,
-            price,
+            name,
+            basePrice,
             toppings: selectedToppings,
         };
 
@@ -43,7 +43,7 @@ class PizzaForm extends Component {
 
     render() {
         const { menu } = this.props;
-        const { label, price, toppings } = this.props.reducer;
+        const { name, basePrice, toppings } = this.props.reducer;
 
         return (
             <Panel>
@@ -55,16 +55,16 @@ class PizzaForm extends Component {
                                 onClick={ () => this.handleSelectedPizza(entry) }
                                 key={ uniqueId('opt') }
                             >
-                                { entry.label }
+                                { entry.name }
                             </DropdownItem>
                         ))
                     }
                 </Dropdown>
                 {
-                    label && (
+                    name && (
                         <div>
-                            <h4 >Size: { label } </h4>
-                            <h4>Price: <CurrencyValue value={ price } /></h4>
+                            <h4 >Size: { name } </h4>
+                            <h4>Price: <CurrencyValue value={ basePrice } /></h4>
                             <Row>
                                 <Col md={ 12 }>
                                     {

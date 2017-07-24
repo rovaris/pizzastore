@@ -8,8 +8,8 @@ import {
 } from './actions';
 
 const PIZZA_FORM_INITIAL_STATE = {
-    value: 0,
-    label: '',
+    basePrize: 0,
+    name: '',
     toppings: [],
     maxToppings: null,
 };

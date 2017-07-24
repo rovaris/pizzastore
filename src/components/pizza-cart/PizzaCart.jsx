@@ -32,8 +32,8 @@ class PizzaCart extends Component {
                     pizzas.map(pizza => (
                         <div key={ uniqueId('pizza') }>
                             <span title="remove" className="icon fa fa-trash-o" onClick={ this.removePizzaFromCart(pizza) } />
-                            <span>{ pizza.label }</span>
-                            <CurrencyValue value={ pizza.price } className="mui--pull-right" />
+                            <span>{ pizza.name }</span>
+                            <CurrencyValue value={ pizza.basePrice } className="mui--pull-right" />
                             <ul>
                                 {
                                     pizza.toppings.map(topping => (
