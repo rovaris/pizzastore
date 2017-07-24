@@ -1,7 +1,10 @@
 'use strict';
 const path = require('path');
+const configResolver = require('./config/configResolver');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const config = configResolver.loadConfig('dev');
 
 module.exports = {
     context: path.join(__dirname, 'src'),
@@ -12,22 +15,22 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'static'),
         filename: 'bundle.js',
-        publicPath: 'http://localhost:8000/'
+        publicPath: config.publicPath,
     },
     module: {
         rules: [
-            // {
-                // enforce: "pre",
-                // test: /\.jsx?$/,
-                // exclude: /node_modules/,
-                // loader: 'eslint-loader',
-                // options: {
-                //     configFile: '.eslintrc',
-                //     emitWarning: true,
-                //     failOnWarning: false,
-                //     failOnError: false,
-                // }
-            // },
+            {
+                enforce: "pre",
+                test: /\.jsx?$/,
+                exclude: /node_modules/,
+                loader: 'eslint-loader',
+                options: {
+                    configFile: '.eslintrc',
+                    emitWarning: true,
+                    failOnWarning: false,
+                    failOnError: false,
+                }
+            },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,

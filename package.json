@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js  --port 8000 --content-base static --hot --inline ",
-    "remote": "webpack --config webpack.config.js && webpack-dev-server --port 8000 --content-base static --hot --inline --host 192.168.0.100",
     "prod": "webpack --config webpack.config.prod.js",
+    "remote": "webpack-dev-server --port 8000 --content-base static --hot --inline --host 192.168.0.100",
     "test": "tests were not implemented in this project"
   },
   "author": "Lucas Rovaris",

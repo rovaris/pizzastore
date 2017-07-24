@@ -1,11 +1,8 @@
 {
     "dev": {
-        "publicPath": "http://localhost:8000",
-    },
-    "remote": {
-        "publicPath": "http://localhost:8000",
+        "publicPath": "http://localhost:8000"
     },
     "production": {
-        "publicPath": "http://localhost:8000",
+        "publicPath": "http://localhost:8000"
     }
 }

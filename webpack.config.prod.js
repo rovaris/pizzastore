@@ -1,11 +1,14 @@
 'use strict';
 const path = require('path');
+const configResolver = require('./config/configResolver');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
 const webpack = require('webpack');
+
+const config = configResolver.loadConfig('production');
 
 module.exports = {
     context: path.join(__dirname, 'src'),
@@ -15,7 +18,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'release'),
         filename: 'bundle.js',
-        publicPath: 'http://lucasrovaris.com/',
+        publicPath: config.publicPath,
     },
     module: {
         rules: [
