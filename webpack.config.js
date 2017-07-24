@@ -16,18 +16,18 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                enforce: "pre",
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'eslint-loader',
-                options: {
-                    configFile: '.eslintrc',
-                    emitWarning: true,
-                    failOnWarning: false,
-                    failOnError: false,
-                }
-            },
+            // {
+                // enforce: "pre",
+                // test: /\.jsx?$/,
+                // exclude: /node_modules/,
+                // loader: 'eslint-loader',
+                // options: {
+                //     configFile: '.eslintrc',
+                //     emitWarning: true,
+                //     failOnWarning: false,
+                //     failOnError: false,
+                // }
+            // },
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,

@@ -8,7 +8,7 @@ import {
 } from './actions';
 
 const PIZZA_CART_INITIAL_STATE = {
-    pizzas: [], //  Imutable Array
+    pizzas: [],
     total: 0,
 };
 

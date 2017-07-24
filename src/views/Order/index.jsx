@@ -1,5 +1,6 @@
 import { reducers } from 'components';
 import OrderView from './view';
+import OrderViewReducer from './reducer';
 
 const { PizzaCartReducer, PizzaFormReducer } = reducers;
 
@@ -7,6 +8,7 @@ const { PizzaCartReducer, PizzaFormReducer } = reducers;
 export const OrderReducer = {
     PizzaCartReducer,
     PizzaFormReducer,
+    OrderViewReducer,
 };
 
 export default OrderView;
