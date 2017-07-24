@@ -1,5 +1,6 @@
 import { uniqueId } from 'lodash';
-import { MOCK_DATA } from 'helpers/queries';
+import { pizzaMenu } from 'helpers/queries';
+import { fetch } from 'helpers/graphql';
 
 export const FETCH_MENU = uniqueId('FETCH_MENU');
 export const FETCHED_MENU = uniqueId('FETCHED_MENU');
@@ -43,10 +44,13 @@ function resetMenu() {
 function fetchMenu() {
     return (dispatch) => {
         dispatch(startFetchMenu());
-        return new Promise((resolve, reject) => {
-            dispatch(fetchedMenu(MOCK_DATA));
-            return resolve();
-        });
+        fetch(pizzaMenu, null, null)
+        .then(results => {
+            dispatch(fetchedMenu(results));
+        })
+        .catch(error => 
+            dispatch(errorFetchingMenu(error.message || error))
+        );
     }
 }
 
@@ -54,27 +58,3 @@ export default {
     resetMenu,
     fetchMenu,
 };
-
-// import { pizzaMenu } from 'helpers/queries';
-// import { fetch } from 'helpers/graphql';
-
-
-// function getData() {
-//     // return (dispatch) => {
-//        fetch(pizzaMenu, null, null).then(function (results) {
-//             debugger;
-//             if (results.errors) {
-//             //... 
-//             return
-//             }
-//           var user = result.data.user
-//           //... 
-//         });
-//     // };
-// }
-
-// getData();
-
-// export {
-//     getData,
-// }
