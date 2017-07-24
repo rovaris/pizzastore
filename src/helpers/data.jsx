@@ -1,13 +1,13 @@
-const normalizeMenu = rawPayload => {
+const normalizeMenu = (rawPayload) => {
     const { data: { pizzaSizes } } = rawPayload;
-    let normalizedMenu = [];
+    const normalizedMenu = [];
 
-    pizzaSizes.forEach(pizza => {
+    pizzaSizes.forEach((pizza) => {
         const { name, maxToppings, basePrice } = pizza;
-        let toppings = [];
+        const toppings = [];
 
-        pizza.toppings.forEach(entry => {
-            let normalizedTopping = { ...entry.topping };
+        pizza.toppings.forEach((entry) => {
+            const normalizedTopping = { ...entry.topping };
             normalizedTopping.defaultSelected = entry.defaultSelected;
             toppings.push(normalizedTopping);
         });
@@ -26,4 +26,4 @@ const normalizeMenu = rawPayload => {
 
 export {
     normalizeMenu,
-}
+};

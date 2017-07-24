@@ -15,15 +15,15 @@ const ORDER_VIEW_REDUCER_INITIAL_STATE = {
 };
 
 const OrderViewReducer = handleActions({
-    [FETCH_MENU]: (state) => ({
+    [FETCH_MENU]: state => ({
         ...state,
         isLoading: true,
         error: null,
     }),
     [FETCHED_MENU]: (state, { payload }) => ({
-            ...state,
-            isLoading: false,
-            menu: normalizeMenu(payload),
+        ...state,
+        isLoading: false,
+        menu: normalizeMenu(payload),
     }),
     [FETCH_ERROR]: (state, { payload }) => ({
         ...state,

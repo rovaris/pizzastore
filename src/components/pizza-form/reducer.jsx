@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { uniqueId } from 'lodash';
+import type { Pizza, Topping } from 'helpers/types';
 
 import {
     SELECT_PIZZA,
@@ -7,14 +8,14 @@ import {
     RESET_FORM,
 } from './actions';
 
-const PIZZA_FORM_INITIAL_STATE = {
+const PIZZA_FORM_INITIAL_STATE: Pizza = {
     basePrize: 0,
     name: '',
     toppings: [],
     maxToppings: null,
 };
 
-const getToppingCount = toppings => (
+const getToppingCount = (toppings: Array<Topping>) => (
     toppings.reduce((previous, current) => {
         if (current.selected) {
             return previous + 1;
@@ -24,7 +25,7 @@ const getToppingCount = toppings => (
     }, 0)
 );
 
-const toggleTopping = (toppings, topping) => (
+const toggleTopping = (toppings: Array<Topping>, topping: Topping) => (
     toppings.some((entry) => {
         if (entry.uid === topping.uid) {
             entry.selected = topping.selected;
@@ -35,7 +36,7 @@ const toggleTopping = (toppings, topping) => (
     })
 );
 
-const unselectFirstTopping = (toppings, selectedTopping) => {
+const unselectFirstTopping = (toppings: Array<Topping>, selectedTopping: Topping) => {
     toppings.some((entry) => {
         if (entry.selected && entry.uid !== selectedTopping.uid) {
             entry.selected = false;

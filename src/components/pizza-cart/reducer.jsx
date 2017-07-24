@@ -1,5 +1,7 @@
+// @flow
 import { handleActions } from 'redux-actions';
 import { uniqueId } from 'lodash';
+import type { Pizza } from 'helpers/types';
 
 import {
     ADD_PIZZA,
@@ -12,13 +14,13 @@ const PIZZA_CART_INITIAL_STATE = {
     total: 0,
 };
 
-const calculateTotalCost = (pizzaList):Number => (
+const calculateTotalCost = (pizzaList: Array<Pizza>):Number => (
     pizzaList.reduce((previous, current) => (
         previous + (current.total)
     ), 0)
 );
 
-const calculatePizzaCost = (pizza):Number => {
+const calculatePizzaCost = (pizza:Pizza):Number => {
     const { toppings } = pizza;
     const toppingsTotal = toppings.reduce((previous, current) => (
         previous + current.price

@@ -4,11 +4,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Panel, Divider, Row, Col } from 'muicss/react';
 import { CurrencyValue } from 'components';
+import type { Pizza } from 'helpers/types';
 import Actions from './actions';
+
 
 class PizzaCart extends Component {
 
-    removePizzaFromCart = pizzaToBeRemoved => () => {
+    removePizzaFromCart = (pizzaToBeRemoved:Pizza) => () => {
         const { actions } = this.props;
         actions.removePizza(pizzaToBeRemoved);
     }

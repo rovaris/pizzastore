@@ -5,21 +5,23 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Panel, Row, Col, Checkbox, Dropdown, DropdownItem, Button } from 'muicss/react';
 import CurrencyValue from 'components/CurrencyValue';
+import type { Pizza, Topping } from 'helpers/types';
 import PizzaFormActions from './actions';
+
 
 class PizzaForm extends Component {
 
     props: {
-        menu: Object,
-        onSubmit: Function,
+        menu: Array<Pizza>,
+        onSubmit: () => void,
     };
 
-    handleSelectedPizza = (pizza) => {
+    handleSelectedPizza = (pizza: Pizza) => {
         const { actions } = this.props;
         actions.selectPizza(pizza);
     }
 
-    handleToggleTopping = topping => () => {
+    handleToggleTopping = (topping: Topping) => () => {
         const { actions } = this.props;
         topping.selected = !topping.selected;
         actions.selectTopping(topping);

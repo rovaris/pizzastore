@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Row, Col } from 'muicss/react';
 import { PizzaForm, PizzaCart, actions } from 'components';
+import type { Pizza } from 'helpers/types';
 import OrderActions from './actions';
 
 const { PizzaCartActions } = actions;
@@ -14,7 +15,7 @@ class OrderView extends Component {
         view.fetchMenu();
     }
 
-    handleFormSubmission = (pizza) => {
+    handleFormSubmission = (pizza: Pizza) => {
         const { cart } = this.props.actions;
         cart.addPizza(pizza);
     }
@@ -36,17 +37,17 @@ class OrderView extends Component {
                     <h2>An unexpected error has ocourred please contact support.</h2>
                     <h2> Error: {error}</h2>
                 </Row>
-            )
+            );
         }
 
         if (menu.length <= 0) {
             return (
                 <Row>
-                    <span className="mui--text-center"> Unfortunately there's no pizza available </span>
+                    <span className="mui--text-center">Unfortunately there&rsquos no pizza available</span>
                 </Row>
             );
         }
- 
+
         return (
             <Row>
                 <Col md="8">
@@ -69,7 +70,7 @@ const mapDispatchToProps = dispatch => ({
     actions: {
         cart: bindActionCreators(PizzaCartActions, dispatch),
         view: bindActionCreators(OrderActions, dispatch),
-    }
+    },
 });
 
 const mapStateToProps = ({ OrderViewReducer }) => ({

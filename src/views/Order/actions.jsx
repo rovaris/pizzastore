@@ -38,20 +38,20 @@ function resetMenu() {
         dispatch({
             type: RESET_MENU,
         });
-    }
+    };
 }
 
 function fetchMenu() {
     return (dispatch) => {
         dispatch(startFetchMenu());
         fetch(pizzaMenu, null, null)
-        .then(results => {
+        .then((results) => {
             dispatch(fetchedMenu(results));
         })
-        .catch(error => 
-            dispatch(errorFetchingMenu(error.message || error))
+        .catch(error =>
+            dispatch(errorFetchingMenu(error.message || error)),
         );
-    }
+    };
 }
 
 export default {

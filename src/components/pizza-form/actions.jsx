@@ -1,10 +1,11 @@
 import { uniqueId } from 'lodash';
+import type { Pizza, Topping } from 'helpers/types';
 
 export const SELECT_PIZZA = uniqueId('SELECT_PIZZA');
 export const SELECT_TOPPING = uniqueId('SELECT_TOPPING');
 export const RESET_FORM = uniqueId('RESET_FORM');
 
-function selectPizza(selectedPizza) {
+function selectPizza(selectedPizza: Pizza) {
     return (dispatch) => {
         dispatch({
             type: SELECT_PIZZA,
@@ -13,7 +14,7 @@ function selectPizza(selectedPizza) {
     };
 }
 
-function selectTopping(topping) {
+function selectTopping(topping: Topping) {
     return (dispatch) => {
         dispatch({
             type: SELECT_TOPPING,
